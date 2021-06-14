@@ -29,7 +29,7 @@ add_action('admin_enqueue_scripts', 'load_scripts');
 function load_scripts()
 {
     wp_enqueue_script('wp-react-init', WR_URL . 'dist/app.bundle.js', [], '1.0.0', true);
-    wp_localize_script('wp-react-plugin', 'appLocalizer', [
+    wp_localize_script('wp-react-init', 'appLocalizer', [
         'apiUrl' => home_url('/wp-json'),
         'nonce' => wp_create_nonce('wp-rest')
     ]);
@@ -37,3 +37,4 @@ function load_scripts()
 
 
 require_once WR_PATH . 'classes/create-admin-menu.php';
+require_once WR_PATH . 'classes/create-router-settngs.php';

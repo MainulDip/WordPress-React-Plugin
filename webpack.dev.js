@@ -40,7 +40,7 @@ module.exports = merge(commonConfig, {
       }
     ]
   },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js']
-  }
+  // resolve: {
+  //   extensions: ['.tsx', '.ts', '.js']
+  // }
 })

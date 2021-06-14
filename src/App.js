@@ -1,9 +1,10 @@
 import React from 'react'
+import Settings from './components/settings'
 
 const App = () => {
     return (
         <>
-            <h1>React Plugin Settings Page</h1>
+            <Settings/>
         </>
     )
 }
