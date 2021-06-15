@@ -1,12 +1,16 @@
 import React from 'react'
-import Settings from './components/settings'
+import Settings from './components/Settings'
+
+if (typeof window !== 'undefined') {
+    require('./app.scss')
+}
 
 const App = () => {
-    return (
-        <>
-            <Settings/>
-        </>
-    )
+  return (
+    <>
+      <Settings />
+    </>
+  )
 }
 
 export default App

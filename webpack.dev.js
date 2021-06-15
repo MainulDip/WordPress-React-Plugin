@@ -1,25 +1,31 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const commonConfig = require('./webpack.common')
+const NodemonPlugin = require('nodemon-webpack-plugin')
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = merge(commonConfig, {
   mode: 'development',
-  watch: true,
+  // watchOptions: {
+  //   poll: 100,
+  //   ignored: /node_modules/
+  // },
+  devtool: 'inline-source-map',
   plugins: [
     // new RemoveEmptyScriptsPlugin({ extensions: ['css.ts'] }),
     // new MiniCssExtractPlugin({
     //   filename: '/style/[name].bundle.css'
     // }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new NodemonPlugin()
   ],
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: [/node_modules/],
         use: {
           loader: 'babel-loader'
         }
@@ -43,4 +49,5 @@ module.exports = merge(commonConfig, {
   // resolve: {
   //   extensions: ['.tsx', '.ts', '.js']
   // }
+  target: ['web', 'es5']
 })

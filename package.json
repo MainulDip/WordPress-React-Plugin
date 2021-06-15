@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --config webpack.dev.js",
+    "start": "webpack --watch --progress --config webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.production.js"
   },
   "scriptsComments": {
@@ -29,6 +29,7 @@
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
+    "nodemon-webpack-plugin": "^4.5.2",
     "sass": "^1.34.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^2.0.0",
