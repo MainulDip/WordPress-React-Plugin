@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-type AppLocalizer = {
-  apiUrl: string;
-  nonce: string;
-};
+// type AppLocalizer = {
+//   apiUrl: string;
+//   nonce: string;
+// };
 
-declare global {
-  var appLocalizer: AppLocalizer;
-}
+// declare global {
+//   var appLocalizer: AppLocalizer;
+// }
 
 const Settings = () => {
   const [firstname, setFirstname] = useState("");
@@ -19,25 +19,24 @@ const Settings = () => {
 
   const url = `${appLocalizer.apiUrl}/wreactapp/v1/settings`;
 
-  // console.log(appLocalizer.nonce);
+  console.log(appLocalizer.nonce);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e) {
     e.preventDefault();
-    (document.activeElement as HTMLElement).blur();
-    e.currentTarget.focus();
     setDataSent(true);
+    // axios.defaults.headers.common['X-WP-Nonce'] = appLocalizer.nonce
     axios
       .post(
         `${url}`,
         JSON.stringify({
           firstname,
           lastname,
-          email,
+          email
         }),
         {
           headers: {
             "Content-Type": "application/json; charset=UTF-8",
-            "X-WP-Nonce": appLocalizer.nonce,
+            "X-WP-Nonce": appLocalizer.nonce
           },
         }
       )
@@ -59,7 +58,7 @@ const Settings = () => {
 
   return (
     <>
-      <h1>WordPress Settings Component From React TypeScript</h1>
+      <h1>WordPress Settings Component From React TypeScript Bismillah </h1>
       <div className="wp-settings-con">
         <form id="wp-settings-form" onSubmit={handleSubmit}>
           <table className="from-table" role="presentation">

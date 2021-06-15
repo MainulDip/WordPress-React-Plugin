@@ -22,19 +22,30 @@ if (!defined('ABSPATH')) exit(); // Stop Direct Access
 
 define('WR_PATH', trailingslashit(plugin_dir_path(__FILE__)));
 define('WR_URL', trailingslashit(plugin_dir_url(__FILE__)));
+// define('TEST_NONCE', wp_create_nonce('wp_rest'));
 
 // Loading Necessery Scripts
 add_action('admin_enqueue_scripts', 'load_scripts');
+
+// $testingNonce = wp_create_nonce('wp_rest');
 
 function load_scripts()
 {
     wp_enqueue_script('wp-react-init', WR_URL . 'dist/bundle.js', [], '1.0.0', true);
     wp_localize_script('wp-react-init', 'appLocalizer', [
         'apiUrl' => home_url('/wp-json'),
-        'nonce' => wp_create_nonce('wp-rest')
+        'nonce' => wp_create_nonce('wp_rest')
     ]);
 }
 
+
+// function output_nonce()
+// {
+//     printf('nonce %s', $testingNonce);
+// }
+
+
+// add_action('admin_notices', 'output_nonce');
 
 require_once WR_PATH . 'classes/create-admin-menu.php';
 require_once WR_PATH . 'classes/create-router-settngs.php';

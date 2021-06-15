@@ -46,25 +46,27 @@ class WR_react_settings_route
 
     public function save_settings($req)
     {
+        print_r($req);
         $firstname = sanitize_text_field($req['firstname']);
         $lastname = sanitize_text_field($req['lastname']);
         $email = sanitize_text_field($req['email']);
 
-        if (
-            update_option('wr-admin-settings-firstname', $firstname) === true ||
-            update_option('wr-admin-settings-lastname', $lastname) === true ||
-            update_option('wr-admin-settings-email', $email) === true
-        ) {
-            return rest_ensure_response('success');
-        } else {
-            return rest_ensure_response('value already exists');
-        }
+
+        update_option('wr-admin-settings-firstname', $firstname);
+        update_option('wr-admin-settings-lastname', $lastname);
+        update_option('wr-admin-settings-email', $email);
+
+        return rest_ensure_response('success');
     }
 
-    public function save_settings_permission()
+    public function save_settings_permission($args)
     {
+        // print_r($args);
         return current_user_can('publish_posts');
+        // return current_user_can( 'edit_posts' );
+        // return true;
     }
 }
+
 
 new WR_react_settings_route();
