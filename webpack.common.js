@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    app: './index.js'
+    app: './index.tsx'
   },
   context: path.resolve(__dirname, 'src'),
   output: {

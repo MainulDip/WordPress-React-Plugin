@@ -19,10 +19,15 @@ module.exports = merge(commonConfig, {
     //   filename: '/style/[name].bundle.css'
     // }),
     new CleanWebpackPlugin(),
-    new NodemonPlugin()
+    // new NodemonPlugin()
   ],
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.js$/,
         exclude: [/node_modules/],
@@ -46,8 +51,8 @@ module.exports = merge(commonConfig, {
       }
     ]
   },
-  // resolve: {
-  //   extensions: ['.tsx', '.ts', '.js']
-  // }
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  },
   target: ['web', 'es5']
 })

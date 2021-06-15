@@ -1,14 +1,11 @@
 import React from 'react'
 import Settings from './components/Settings'
-
-if (typeof window !== 'undefined') {
-    require('./app.scss')
-}
+import './app.scss'
 
 const App = () => {
   return (
     <>
-      <Settings />
+      <Settings/>
     </>
   )
 }

@@ -16,11 +16,11 @@ module.exports = merge(webpackCommonConfig, {
   ],
   module: {
     rules: [
-      //   {
-      //     test: /\.tsx?$/,
-      //     use: 'ts-loader',
-      //     exclude: /node_modules/
-      //   },
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/
+        },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -44,8 +44,8 @@ module.exports = merge(webpackCommonConfig, {
       }
     ]
   },
-//   resolve: {
-//     extensions: ['.tsx', '.ts', '.js']
-//   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  },
   target: ['web', 'es5']
 })
