@@ -24,7 +24,6 @@ const Settings = () => {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     (document.activeElement as HTMLElement).blur();
-    e.currentTarget.focus();
     setDataSent(true);
     axios
       .post(
